@@ -21,9 +21,11 @@ export default function Pagination({ page, totalPages, onPageChange, totalItems,
             {pages.map((p, i) =>
                 p === '...'
                     ? <span key={`e${i}`} style={{ color: 'var(--text-muted)', padding: '0 4px' }}>…</span>
-                    : <button key={p} className={`page-btn${p === page ? ' active' : ''}`} onClick={() => onPageChange(p)}>{p}</button>
+                    : <button key={p} className={`page-btn${p === page ? ' active' : ''}`}
+                     onClick={() => onPageChange(p)}>{p}</button>
             )}
-            <button className="page-btn" disabled={page === totalPages} onClick={() => onPageChange(page + 1)}>›</button>
+            <button className="page-btn" disabled={page === totalPages}
+             onClick={() => onPageChange(page + 1)}>›</button>
         </div>
     );
 }
