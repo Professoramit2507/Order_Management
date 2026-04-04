@@ -456,3 +456,81 @@ tbody tr:last-child td { border-bottom: none; }
 .dot-success { background: var(--success); }
 .dot-danger  { background: var(--danger); }
 .dot-warning { background: var(--warning); }
+
+
+
+
+
+
+
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: #111;
+    color: #fff;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: transform 0.3s ease;
+}
+
+/* Mobile hidden by default */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        z-index: 1000;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+}
+
+.sidebar-toggle {
+    position: absolute;
+    top: 60px;
+    left: 15px;
+    z-index: 1100;
+    width: 40px;
+    height: 40px;
+    /* background: #111; */
+    border: none;
+    border-radius: 8px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Show only on mobile */
+@media (max-width: 768px) {
+    .sidebar-toggle {
+        display: flex;
+    }
+}
+
+/* Hamburger lines */
+.sidebar-toggle span {
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    transition: 0.3s;
+}
+
+/* Position lines */
+.sidebar-toggle span:nth-child(1) { transform: translateY(-6px); }
+.sidebar-toggle span:nth-child(2) { transform: translateY(0); }
+.sidebar-toggle span:nth-child(3) { transform: translateY(6px); }
+
+/* Animate to X when open */
+.sidebar-toggle.active span:nth-child(1) {
+    transform: rotate(45deg);
+}
+.sidebar-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+.sidebar-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg);
+}

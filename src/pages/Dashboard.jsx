@@ -7,7 +7,7 @@ import {
 import { useApp } from '../context/AppContext';
 import { useAuth } from '../context/AuthContext';
 import Badge from '../components/Badge';
-import { formatCurrency, formatTime, isToday, getTodayStats, getRestockPriority } from '../utils/helpers';
+import { formatCurrency, formatTime,  getTodayStats } from '../utils/helpers';
 
 const COLORS = ['#6366f1', '#f59e0b', '#10b981', '#3b82f6', '#ef4444'];
 
@@ -51,7 +51,7 @@ export default function Dashboard() {
         <div>
             {/* Welcome */}
             <div style={{ marginBottom: 24 }}>
-                <h2 style={{ fontSize: 20, fontWeight: 800 }}>Good {getGreeting()}, {user?.name?.split(' ')[0]}! 👋</h2>
+                <h2 style={{ fontSize: 20, fontWeight: 800 , }}>Good {getGreeting()}, {user?.name?.split(' ')[0]}!</h2>
                 <p style={{ fontSize: 13, color: 'var(--text-secondary)', marginTop: 4 }}>Here's what's happening with your inventory today.</p>
             </div>
 
@@ -132,7 +132,7 @@ export default function Dashboard() {
                         ? <p style={{ fontSize: 13, color: 'var(--text-muted)' }}>No products yet.</p>
                         : <div className="product-summary-list">
                             {stockItems.map(p => {
-                                const priority = getRestockPriority(p.stock, p.minThreshold);
+                                // const priority = getRestockPriority(p.stock, p.minThreshold);
                                 const isLow = p.stock < p.minThreshold;
                                 return (
                                     <div className="product-summary-item" key={p.id}>
